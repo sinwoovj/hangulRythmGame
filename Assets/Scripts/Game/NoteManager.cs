@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NoteManager", menuName = "Custom/NoteManager")]
+// [CreateAssetMenu(fileName = "NoteManager", menuName = "Custom/NoteManager")]
 public class NoteManager : ScriptableObject
 {
     Dictionary<int, NoteData> noteList;
@@ -22,15 +22,15 @@ public class NoteManager : ScriptableObject
         noteList.Add(123, new NoteData(1, 2, 3)); // Giyeok, 반시계방향(빨간색), 좌측하단
         noteList.Add(124, new NoteData(1, 2, 4)); // Giyeok, 반시계방향(빨간색), 좌측상단
 
-        noteList.Add(205, new NoteData(2, 0, 5)); // DiGeut, 없음, 우측
+        noteList.Add(205, new NoteData(2, 0, 5)); // DiGeut, 없음, 상단
         noteList.Add(206, new NoteData(2, 0, 6)); // DiGeut, 없음, 좌측
-        noteList.Add(207, new NoteData(2, 0, 7)); // DiGeut, 없음, 상단
-        noteList.Add(208, new NoteData(2, 0, 8)); // DiGeut, 없음, 하단
+        noteList.Add(207, new NoteData(2, 0, 7)); // DiGeut, 없음, 하단
+        noteList.Add(208, new NoteData(2, 0, 8)); // DiGeut, 없음, 우측
         
-        noteList.Add(311, new NoteData(3, 1, 1)); // RieUl, 시계방향(파란색), 우측
-        noteList.Add(312, new NoteData(3, 1, 2)); // RieUl, 시계방향(파란색), 상단
-        noteList.Add(321, new NoteData(3, 2, 1)); // RieUl, 반시계방향(빨간색), 좌측
-        noteList.Add(322, new NoteData(3, 2, 2)); // RieUl, 반시계방향(빨간색), 하단
+        noteList.Add(311, new NoteData(3, 0, 1)); // RieUl, 시계방향(파란색), 상단
+        noteList.Add(312, new NoteData(3, 0, 2)); // RieUl, 시계방향(파란색), 좌측
+        noteList.Add(321, new NoteData(3, 0, 3)); // RieUl, 반시계방향(빨간색), 하단
+        noteList.Add(322, new NoteData(3, 0, 4)); // RieUl, 반시계방향(빨간색), 우측
 
         noteList.Add(405, new NoteData(4, 0, 5)); // SiOt, 없음, 우측
         noteList.Add(406, new NoteData(4, 0, 6)); // SiOt, 없음, 좌측

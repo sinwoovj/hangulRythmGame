@@ -33,21 +33,9 @@ public class Movement2D : MonoBehaviour
     void Update()
     {
         //#Move Value
+        
         h = Manager.isAction ? 0 : Input.GetAxisRaw("Horizontal"); //isAction이라는 플래그 값을 활용함.
         v = Manager.isAction ? 0 : Input.GetAxisRaw("Vertical");
-
-        if(0 == h && 0 == v){
-            isPressForMove = false;
-        }
-        else{
-            isPressForMove = true;
-        }
-
-
-        // KeySettingValue.keys[1]
-        //#수평, 수직 이동 버튼이벤트를 변수로 저장
-        //상태 변수를 사용하여 플레이어 이동을 제한함.
-        
 
         hDown = Manager.isAction ? false : Input.GetButtonDown("Horizontal"); 
         vDown = Manager.isAction ? false : Input.GetButtonDown("Vertical");
