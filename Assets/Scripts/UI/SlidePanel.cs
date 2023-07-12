@@ -20,58 +20,27 @@ public class SlidePanel : MonoBehaviour
 
     public void SlidePanelFunc()
     {
-        if (currentCoroutine != null)
-        {
-            StopCoroutine(currentCoroutine);
-        }
-
-        if (isOpen)
-        {
-            currentTime = 0;
-            currentCoroutine = CloseSlidePanel();
-        }
-        else
-        {
-            currentTime = 0;
-            currentCoroutine = OpenSlidePanel();
-        }
-
+        if (currentCoroutine != null) StopCoroutine(currentCoroutine);
+        currentTime = 0;
+        currentCoroutine = SlidePanelCoroutine(!isOpen);
+        isOpen = !isOpen;
         StartCoroutine(currentCoroutine);
     }
 
-    private IEnumerator OpenSlidePanel()
+    private IEnumerator SlidePanelCoroutine(bool isopen)
     {
-        isOpen = true;
+        Vector3 ed = endPosition.position;
+        Vector3 st = startPosition.position;
 
-        while (currentTime < lerpTime)
+        while (currentTime <= lerpTime)
         {
             currentTime += Time.deltaTime;
-
             float t = Mathf.SmoothStep(0, 1, currentTime / lerpTime);
-            this.transform.position = Vector3.Lerp(endPosition.position, startPosition.position, t);
-
+            this.transform.position = Vector3.Lerp(isopen ? ed : st, isopen ? st : ed, t);
+            SlidePanelArrow.transform.rotation = Quaternion.Euler(new Vector3(0,0,isopen ? 180-180*t : 180*t));
             yield return null;
         }
-
-        this.transform.position = startPosition.position;
-        currentCoroutine = null;
-    }
-
-    private IEnumerator CloseSlidePanel()
-    {
-        isOpen = false;
-
-        while (currentTime < lerpTime)
-        {
-            currentTime += Time.deltaTime;
-
-            float t = Mathf.SmoothStep(0, 1, currentTime / lerpTime);
-            this.transform.position = Vector3.Lerp(startPosition.position, endPosition.position, t);
-
-            yield return null;
-        }
-
-        this.transform.position = endPosition.position;
+        this.transform.position = isopen ? st : ed;
         currentCoroutine = null;
     }
 }
