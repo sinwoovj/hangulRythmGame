@@ -37,7 +37,7 @@ public class MainMenuButtons : MonoBehaviour
     }
     
     public void ExitButton(){
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
 }
